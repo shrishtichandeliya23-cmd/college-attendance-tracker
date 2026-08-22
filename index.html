@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My College Diary</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <main class="page">
+
+
+        <!-- HEADER -->
+
+        <header class="hero">
+
+            <div class="small-title">
+                COLLEGE • DIARY
+            </div>
+
+            <h1>
+                my attendance journal
+            </h1>
+
+            <p>
+                a little record of my college days ♡
+            </p>
+
+        </header>
+
+
+        <!-- OVERALL STATISTICS -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <span>
+                    attended
+                </span>
+
+                <strong id="attended">
+                    0
+                </strong>
+
+                <small>
+                    days
+                </small>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    absent
+                </span>
+
+                <strong id="absent">
+                    0
+                </strong>
+
+                <small>
+                    days
+                </small>
+
+            </div>
+
+
+            <div class="stat-card highlight">
+
+                <span>
+                    attendance
+                </span>
+
+                <strong id="percentage">
+                    0%
+                </strong>
+
+                <small>
+                    overall
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- COLLEGE DAYS -->
+
+        <section class="college-days">
+
+            <div class="section-title">
+
+                <span>
+                    MY COLLEGE WEEK
+                </span>
+
+                <small>
+                    choose your college days
+                </small>
+
+            </div>
+
+
+            <div class="day-options">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        value="1"
+                        checked
+                    >
+
+                    <span>
+                        MON
+                    </span>
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        value="2"
+                        checked
+                    >
+
+                    <span>
+                        TUE
+                    </span>
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        value="3"
+                        checked
+                    >
+
+                    <span>
+                        WED
+                    </span>
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        value="4"
+                        checked
+                    >
+
+                    <span>
+                        THU
+                    </span>
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        value="5"
+                        checked
+                    >
+
+                    <span>
+                        FRI
+                    </span>
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        value="6"
+                    >
+
+                    <span>
+                        SAT
+                    </span>
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        value="0"
+                    >
+
+                    <span>
+                        SUN
+                    </span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- ATTENDANCE ADVICE -->
+
+        <section class="attendance-advice">
+
+            <div class="advice-title">
+                ATTENDANCE CHECK
+            </div>
+
+
+            <h3 id="adviceTitle">
+                Your attendance story starts here ♡
+            </h3>
+
+
+            <p id="adviceText">
+                Mark your college days to see your attendance advice.
+            </p>
+
+        </section>
+
+
+        <!-- MONTHLY ATTENDANCE -->
+
+        <section class="monthly-card">
+
+            <div class="monthly-heading">
+
+                <span>
+                    THIS MONTH
+                </span>
+
+                <strong id="monthlyMonth">
+                    AUGUST 2026
+                </strong>
+
+            </div>
+
+
+            <div class="monthly-stats">
+
+                <div>
+
+                    <small>
+                        ATTENDED
+                    </small>
+
+                    <strong id="monthlyAttended">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        ABSENT
+                    </small>
+
+                    <strong id="monthlyAbsent">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        ATTENDANCE
+                    </small>
+
+                    <strong id="monthlyPercentage">
+                        0%
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CALENDAR -->
+
+        <section class="calendar-card">
+
+
+            <div class="calendar-top">
+
+                <button id="prevMonth">
+                    ←
+                </button>
+
+
+                <div>
+
+                    <p class="month-label">
+                        MY MONTH
+                    </p>
+
+                    <h2 id="monthYear">
+                        August 2026
+                    </h2>
+
+                </div>
+
+
+                <button id="nextMonth">
+                    →
+                </button>
+
+            </div>
+
+
+            <!-- WEEKDAYS -->
+
+            <div class="weekdays">
+
+                <span>MON</span>
+
+                <span>TUE</span>
+
+                <span>WED</span>
+
+                <span>THU</span>
+
+                <span>FRI</span>
+
+                <span>SAT</span>
+
+                <span>SUN</span>
+
+            </div>
+
+
+            <!-- CALENDAR -->
+
+            <div id="calendar"></div>
+
+
+            <!-- GOAL -->
+
+            <div class="goal-section">
+
+                <div class="goal-header">
+
+                    <span>
+                        MY ATTENDANCE GOAL
+                    </span>
+
+                    <strong>
+                        75%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div id="progressFill"></div>
+
+                </div>
+
+
+                <p id="goalMessage">
+                    Start marking your college days ♡
+                </p>
+
+            </div>
+
+
+            <!-- LEGEND -->
+
+            <div class="instructions">
+
+                <span class="dot present-dot"></span>
+
+                attended
+
+
+                <span class="dot absent-dot"></span>
+
+                absent
+
+
+                <span class="dot empty-dot"></span>
+
+                not marked
+
+            </div>
+
+        </section>
+
+
+        <!-- ATTENDANCE HISTORY -->
+
+        <section class="history-card">
+
+
+            <div class="history-heading">
+
+                <span>
+                    ATTENDANCE HISTORY
+                </span>
+
+                <small>
+                    your college days
+                </small>
+
+            </div>
+
+
+            <div id="historyList">
+
+                <p class="empty-history">
+                    Your attendance history will appear here ♡
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <p>
+                showing up for myself, one day at a time ♡
+            </p>
+
+        </footer>
+
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,602 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f5f0ea;
+    color: #403633;
+    font-family: "DM Sans", sans-serif;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.page {
+    max-width: 950px;
+    margin: auto;
+}
+
+/* HEADER */
+
+.hero {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.small-title {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #a47778;
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 52px;
+    font-weight: 500;
+    color: #493c3b;
+}
+
+.hero p {
+    margin-top: 5px;
+    font-size: 13px;
+    color: #8b7773;
+}
+
+/* STATISTICS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: #eee6df;
+    padding: 22px;
+    text-align: center;
+    border: 1px solid #ded2ca;
+}
+
+.stat-card span {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+    color: #806b67;
+}
+
+.stat-card strong {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 35px;
+    font-weight: 500;
+    margin: 5px 0;
+}
+
+.stat-card small {
+    font-size: 10px;
+    color: #998682;
+}
+
+.stat-card.highlight {
+    background: #e5d0d0;
+    border-color: #d4b7b8;
+}
+
+/* COLLEGE DAYS */
+
+.college-days {
+    background: #eee6df;
+    border: 1px solid #ded2ca;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-title span {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #806b67;
+}
+
+.section-title small {
+    font-size: 10px;
+    color: #9b8781;
+}
+
+.day-options {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.day-options label {
+    cursor: pointer;
+}
+
+.day-options input {
+    display: none;
+}
+
+.day-options span {
+    display: block;
+    text-align: center;
+    padding: 10px 5px;
+    border: 1px solid #d8cbc3;
+    background: #f8f4ef;
+    color: #806b67;
+    font-size: 10px;
+    letter-spacing: 1px;
+    transition: 0.2s;
+}
+
+.day-options input:checked + span {
+    background: #d9b7b8;
+    border-color: #c89c9e;
+    color: #63484a;
+}
+
+/* ATTENDANCE ADVICE */
+
+.attendance-advice {
+    background: #fffaf6;
+    border: 1px solid #e2d5cd;
+    padding: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.advice-title {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #aa8584;
+    margin-bottom: 8px;
+}
+
+.attendance-advice h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 27px;
+    font-weight: 500;
+    color: #704f51;
+    margin-bottom: 5px;
+}
+
+.attendance-advice p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 17px;
+    color: #8b7773;
+}
+
+/* MONTHLY ATTENDANCE */
+
+.monthly-card {
+    background: #e9ded8;
+    border: 1px solid #d9cbc3;
+    padding: 22px;
+    margin-bottom: 20px;
+}
+
+.monthly-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.monthly-heading span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #806b67;
+}
+
+.monthly-heading strong {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #704f51;
+}
+
+.monthly-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.monthly-stats div {
+    background: #f8f3ee;
+    border: 1px solid #dfd2ca;
+    padding: 15px;
+    text-align: center;
+}
+
+.monthly-stats small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #8b7773;
+    margin-bottom: 5px;
+}
+
+.monthly-stats strong {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: #704f51;
+}
+
+/* CALENDAR */
+
+.calendar-card {
+    background: #fffdf9;
+    border: 1px solid #ded5ce;
+    padding: 35px;
+    box-shadow: 0 12px 35px rgba(70, 55, 45, 0.08);
+}
+
+.calendar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.calendar-top button {
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    color: #846667;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.calendar-top button:hover {
+    color: #b16d72;
+}
+
+.calendar-top div {
+    text-align: center;
+}
+
+.month-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #aa8584;
+    margin-bottom: 3px;
+}
+
+.calendar-top h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+/* WEEKDAYS */
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid #e5ddd7;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+}
+
+.weekdays span {
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #9b8781;
+}
+
+/* CALENDAR */
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.day {
+    min-height: 75px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 12px;
+    background: #faf7f3;
+    border: 1px solid transparent;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 19px;
+    color: #554744;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.day:hover {
+    border-color: #d6b9b6;
+    transform: translateY(-2px);
+}
+
+.day.present {
+    background: #ead4d5;
+    border-color: #d2b0b1;
+    color: #704f51;
+}
+
+.day.present::after {
+    content: "♡";
+    font-size: 20px;
+    margin-left: auto;
+}
+
+.day.absent {
+    background: #e8e3df;
+    border-color: #d0c7c0;
+    color: #776d67;
+}
+
+.day.absent::after {
+    content: "—";
+    margin-left: auto;
+    color: #a08f88;
+}
+
+.day.not-college {
+    background: #f1ede8;
+    color: #b3a8a1;
+    cursor: default;
+}
+
+.day.not-college:hover {
+    transform: none;
+    border-color: transparent;
+}
+
+/* GOAL */
+
+.goal-section {
+    margin-top: 30px;
+    padding: 22px;
+    background: #f7f0eb;
+    border: 1px solid #e3d7cf;
+}
+
+.goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.goal-header span {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #806b67;
+}
+
+.goal-header strong {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 25px;
+    font-weight: 500;
+    color: #8d5c60;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e5ddd7;
+    overflow: hidden;
+}
+
+#progressFill {
+    width: 0%;
+    height: 100%;
+    background: #bd8589;
+    transition: width 0.4s ease;
+}
+
+#goalMessage {
+    margin-top: 10px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 16px;
+    color: #8b6c6b;
+}
+
+/* LEGEND */
+
+.instructions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8b7973;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.present-dot {
+    background: #c99fa2;
+}
+
+.absent-dot {
+    background: #aaa09a;
+}
+
+.empty-dot {
+    background: #eee8e2;
+    border: 1px solid #d8cec6;
+}
+
+/* ATTENDANCE HISTORY */
+
+.history-card {
+    background: #fffaf6;
+    border: 1px solid #ded2ca;
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.history-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5ddd7;
+    margin-bottom: 15px;
+}
+
+.history-heading span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #806b67;
+}
+
+.history-heading small {
+    font-size: 10px;
+    color: #9b8781;
+}
+
+#historyList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.empty-history {
+    text-align: center;
+    padding: 20px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 17px;
+    color: #9b8781;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 15px;
+    background: #f7f1ec;
+    border: 1px solid #e3d8d0;
+}
+
+.history-date {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px;
+    color: #554744;
+}
+
+.history-status {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.history-status.present {
+    color: #8d5c60;
+}
+
+.history-status.absent {
+    color: #8a817c;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    margin-top: 25px;
+}
+
+footer p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 16px;
+    color: #927b78;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 25px 12px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar-card {
+        padding: 20px 12px;
+    }
+
+    .day {
+        min-height: 55px;
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    #calendar {
+        gap: 5px;
+    }
+
+    .weekdays span {
+        font-size: 7px;
+    }
+
+    .day-options {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .monthly-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .monthly-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .history-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .history-item {
+        padding: 11px;
+    }
+
+    .history-date {
+        font-size: 16px;
+    }
+}
