@@ -50,9 +50,16 @@ const nextMonth =
 const attendanceGoal = 75;
 
 
+/* Attendance tracking starts from September 1, 2026 */
+
+const trackingStartDate =
+    new Date(2026, 8, 1);
+
+
 /* Starting month */
 
-let currentDate = new Date(2026, 7, 1);
+let currentDate =
+    new Date(2026, 8, 1);
 
 
 /* Saved attendance */
@@ -165,6 +172,44 @@ function saveAttendance() {
 }
 
 
+/* Check if date is before tracking start */
+
+function isBeforeTrackingStart(date) {
+
+    const checkDate =
+        new Date(date);
+
+    checkDate.setHours(0, 0, 0, 0);
+
+    const startDate =
+        new Date(trackingStartDate);
+
+    startDate.setHours(0, 0, 0, 0);
+
+    return checkDate < startDate;
+
+}
+
+
+/* Check if date is today or past */
+
+function isTodayOrPast(date) {
+
+    const today =
+        new Date();
+
+    today.setHours(0, 0, 0, 0);
+
+    const checkDate =
+        new Date(date);
+
+    checkDate.setHours(0, 0, 0, 0);
+
+    return checkDate <= today;
+
+}
+
+
 /* Create calendar */
 
 function createCalendar() {
@@ -257,7 +302,8 @@ function createCalendar() {
         dayBox.classList.add("day");
 
 
-        dayBox.textContent = day;
+        dayBox.textContent =
+            day;
 
 
         const date =
@@ -278,6 +324,47 @@ function createCalendar() {
                 month,
                 day
             );
+
+
+        /* Before tracking starts */
+
+        if (
+            isBeforeTrackingStart(date)
+        ) {
+
+            dayBox.classList.add(
+                "not-college"
+            );
+
+        }
+
+
+        /* Non-college day */
+
+        else if (
+            !collegeDays.includes(
+                weekDay
+            )
+        ) {
+
+            dayBox.classList.add(
+                "not-college"
+            );
+
+        }
+
+
+        /* Future date */
+
+        else if (
+            !isTodayOrPast(date)
+        ) {
+
+            dayBox.classList.add(
+                "not-college"
+            );
+
+        }
 
 
         /* Restore attendance */
@@ -305,31 +392,40 @@ function createCalendar() {
         }
 
 
-        /* Non-college day */
-
-        if (
-            !collegeDays.includes(
-                weekDay
-            )
-        ) {
-
-            dayBox.classList.add(
-                "not-college"
-            );
-
-        }
-
-
         /* Click date */
 
         dayBox.addEventListener(
             "click",
             function () {
 
+                /* Before tracking starts */
+
+                if (
+                    isBeforeTrackingStart(date)
+                ) {
+
+                    return;
+
+                }
+
+
+                /* Only college days */
+
                 if (
                     !collegeDays.includes(
                         weekDay
                     )
+                ) {
+
+                    return;
+
+                }
+
+
+                /* Don't allow future dates */
+
+                if (
+                    !isTodayOrPast(date)
                 ) {
 
                     return;
@@ -399,33 +495,25 @@ function getOverallAttendance() {
     let absent = 0;
 
 
+    const today =
+        new Date();
+
+    today.setHours(0, 0, 0, 0);
+
+
+    /*
+        Count only college days
+        from September 1, 2026
+        up to today.
+    */
+
     for (
-        const dateKey in attendance
+        let date = new Date(trackingStartDate);
+        date <= today;
+        date.setDate(
+            date.getDate() + 1
+        )
     ) {
-
-        const parts =
-            dateKey.split("-");
-
-
-        const year =
-            Number(parts[0]);
-
-
-        const month =
-            Number(parts[1]) - 1;
-
-
-        const day =
-            Number(parts[2]);
-
-
-        const date =
-            new Date(
-                year,
-                month,
-                day
-            );
-
 
         const weekDay =
             date.getDay();
@@ -442,6 +530,14 @@ function getOverallAttendance() {
         }
 
 
+        const dateKey =
+            getDateKey(
+                date.getFullYear(),
+                date.getMonth(),
+                date.getDate()
+            );
+
+
         if (
             attendance[dateKey] ===
             "present"
@@ -451,10 +547,7 @@ function getOverallAttendance() {
 
         }
 
-        else if (
-            attendance[dateKey] ===
-            "absent"
-        ) {
+        else {
 
             absent++;
 
@@ -488,29 +581,38 @@ function getMonthlyAttendance() {
         currentDate.getMonth();
 
 
+    const today =
+        new Date();
+
+    today.setHours(0, 0, 0, 0);
+
+
+    const daysInMonth =
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate();
+
+
     for (
-        const dateKey in attendance
+        let day = 1;
+        day <= daysInMonth;
+        day++
     ) {
 
-        const parts =
-            dateKey.split("-");
+        const date =
+            new Date(
+                year,
+                month,
+                day
+            );
 
 
-        const dateYear =
-            Number(parts[0]);
-
-
-        const dateMonth =
-            Number(parts[1]) - 1;
-
-
-        const day =
-            Number(parts[2]);
-
+        /* Before tracking starts */
 
         if (
-            dateYear !== year ||
-            dateMonth !== month
+            isBeforeTrackingStart(date)
         ) {
 
             continue;
@@ -518,12 +620,15 @@ function getMonthlyAttendance() {
         }
 
 
-        const date =
-            new Date(
-                dateYear,
-                dateMonth,
-                day
-            );
+        /* Don't count future days */
+
+        if (
+            date > today
+        ) {
+
+            continue;
+
+        }
 
 
         const weekDay =
@@ -541,6 +646,14 @@ function getMonthlyAttendance() {
         }
 
 
+        const dateKey =
+            getDateKey(
+                year,
+                month,
+                day
+            );
+
+
         if (
             attendance[dateKey] ===
             "present"
@@ -550,10 +663,7 @@ function getMonthlyAttendance() {
 
         }
 
-        else if (
-            attendance[dateKey] ===
-            "absent"
-        ) {
+        else {
 
             absent++;
 
@@ -722,32 +832,41 @@ function updateHistory() {
         currentDate.getMonth();
 
 
+    const today =
+        new Date();
+
+    today.setHours(0, 0, 0, 0);
+
+
     const monthEntries = [];
 
 
+    const daysInMonth =
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate();
+
+
     for (
-        const dateKey in attendance
+        let day = 1;
+        day <= daysInMonth;
+        day++
     ) {
 
-        const parts =
-            dateKey.split("-");
+        const date =
+            new Date(
+                year,
+                month,
+                day
+            );
 
 
-        const dateYear =
-            Number(parts[0]);
-
-
-        const dateMonth =
-            Number(parts[1]) - 1;
-
-
-        const day =
-            Number(parts[2]);
-
+        /* Before tracking starts */
 
         if (
-            dateYear !== year ||
-            dateMonth !== month
+            isBeforeTrackingStart(date)
         ) {
 
             continue;
@@ -755,12 +874,15 @@ function updateHistory() {
         }
 
 
-        const date =
-            new Date(
-                dateYear,
-                dateMonth,
-                day
-            );
+        /* Don't show future days */
+
+        if (
+            date > today
+        ) {
+
+            continue;
+
+        }
 
 
         const weekDay =
@@ -778,23 +900,25 @@ function updateHistory() {
         }
 
 
+        const dateKey =
+            getDateKey(
+                year,
+                month,
+                day
+            );
+
+
         monthEntries.push({
+
             day,
-            status: attendance[dateKey]
+
+            status:
+                attendance[dateKey] ||
+                "absent"
+
         });
 
     }
-
-
-    /* Sort dates */
-
-    monthEntries.sort(
-        function (a, b) {
-
-            return a.day - b.day;
-
-        }
-    );
 
 
     /* No history */
@@ -928,7 +1052,7 @@ function updateAdvice(
             "Your attendance story starts here ♡";
 
         adviceText.textContent =
-            "Mark your college days to see how many days you can miss.";
+            "Your September attendance will appear here.";
 
         return;
 
